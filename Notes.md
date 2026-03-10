@@ -140,6 +140,12 @@ regular expressions
 - `(RX1|RX2)` either something that matches `RX1` or `RX2`
 - `^` the start of the line
 - `$` the end of the line
+- `\d` any digit
+- `\w` any alphanumeric character
+- `\s` any whitespace
+- `{m}` m repetitions
+- `{m,n}` m to n repetitions
+- `(...)` capture group
 
 suffix * or + with a ? to make them non-greedy
 
