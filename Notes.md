@@ -152,3 +152,110 @@ suffix * or + with a ? to make them non-greedy
 `sort` `uniq -c` `head` `tail` `paste`
 
 `awk`
+
+do not substitude the same file with `>`, because the shell will clear the file after `>` in the first
+
+## job control
+`Ctrl-C` `SIGINT`
+`Ctrl-\` `SIGQUIT`
+`Ctrl-Z` `SIGSTOP`
+
+`nohup`
+
+tmux
+
+## aliases
+`alias alias_name="command_to_alias arg1 arg2"`
+
+`ssh foobar@server command` 
+
+`ssh-keygen` `ssh-agent`
+
+copying files over SSH `ssh + tee` `scp` `rsync`
+
+port forwarding
+
+## git
+```
+// a file is a bunch of bytes
+type blob = array<byte>
+
+// a directory contains named files and directories
+type tree = map<string, tree | blob>
+
+// a commit has parents, metadata, and the top-level tree
+type commit = struct {
+    parents: array<commit>
+    author: string
+    message: string
+    snapshot: tree
+}
+
+type object = blob | tree | commit
+
+objects = map<string, object>
+
+def store(object):
+    id = sha1(object)
+    objects[id] = object
+
+def load(id):
+    return objects[id]
+
+references = map<string, string>
+
+def update_reference(name, id):
+    references[name] = id
+
+def read_reference(name):
+    return references[name]
+
+def load_reference(name_or_id):
+    if name_or_id in references:
+        return load(references[name_or_id])
+    else:
+        return load(name_or_id)
+```
+
+commands
+```
+git cat-file -p
+
+git help <command>
+git init
+git status
+git add <filename>
+git commit
+git log [--all --graph --decorate --oneline]
+git diff <filename>
+git checkout <revision>
+
+git branch
+git branch <name>
+git checkout -b <name>
+git merge <revision>
+git mergetool
+git rebase
+
+git remote
+git remote add <name> <url>
+git push <remote> <local branch>:<remote branch>
+git branch --set-upstream-to=<remote>/<remote branch>
+git fetch
+git pull
+git clone
+
+git commit --amend
+git reset HEAD <file>
+git checkout -- <file>
+
+git config
+git clone --depth=1
+git add -p
+git rebase -i
+git blame
+git stash
+git bisect
+```
+
+.gitignore
