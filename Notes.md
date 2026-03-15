@@ -3,7 +3,7 @@
 Bourne Again SHell(bash)
 
 command:  
-`date` `echo` `which` `pwd` `cd` `ls` `mv` `cp` `mkdir` `man` `cat` `find` `tee` `sudo`
+`date` `echo` `which` `pwd` `cd` `ls` `mv` `cp` `mkdir` `man` `cat` `tac` `find` `tee` `sudo`
 
 redirection operator: `<` `>` `>>`  
 pipe operator: `|`
@@ -259,3 +259,48 @@ git bisect
 ```
 
 .gitignore
+
+## debugging and profiling
+debugging
+- printf
+- logging  
+  `logger` `lnav`
+- debuggers  
+  for python: `pdb` `ipdb`  
+  for c: `gdb` `pwndbg` `lldb`
+- specialized tools  
+  system calls: `strace`  
+  network packets: `tcpdump` and wireshark  
+  web development: Chrome/Firefox developer tools
+- static analysis  
+  for python: `pyflakes` `mypy`  
+  for shell: `shellcheck`  
+
+profiling
+- timing  
+  `time` real, user, sys
+- profilers
+  - CPU  
+    for python: `cProfile` `line-profiler`
+  - event profiling  
+    `perf`
+  - visualization  
+    flame graph  
+    for python: `pycallgraph`
+  - resource monitoring
+    - general monitoring  
+      `htop` `dool`
+    - I/O operations  
+      `iotop`
+    - disk usage  
+      `df` `du` `ncdu`
+    - memory usage  
+      `free` `htop`
+    - open files  
+      `lsof`
+    - network connecions and config  
+      `ss` `ip`
+    - network usage  
+      `nethogs` `iftop`
+  - specialized tools  
+    `hyperfine`
